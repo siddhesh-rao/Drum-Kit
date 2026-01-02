@@ -11,12 +11,14 @@ var drumCount= document.querySelectorAll(".drum").length;
 for(var i=0; i<drumCount; i++){
     document.querySelectorAll("button")[i].addEventListener("click", function(){
         makeSounds(this.innerHTML);
+        buttonAnimation(this.innerHTML);
     });
 }
 
 
 document.addEventListener("keydown", function(event){
     makeSounds(event.key);
+    buttonAnimation(event.key);
 });
 
 
@@ -54,6 +56,14 @@ function makeSounds(key){
     };
 }
 
+function buttonAnimation(currentKey){
+    var activeButton= document.querySelector("."+ currentKey);
+    activeButton.classList.add("pressed");
+
+    //setTimeout(functionToRun, delayInMilliseconds);
+    setTimeout(function(){activeButton.classList.remove("pressed");}, 100);
+    
+}
 
 //to play sound in js.
 // var audio1 = new Audio('./sounds/tom-1.mp3');
@@ -62,6 +72,7 @@ function makeSounds(key){
 
 //jo key press karenge uska color white hojayega (uper anonymous) function ke andar.
 //this.style.color="white";
+
 
 
 
